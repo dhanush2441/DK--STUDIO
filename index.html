@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DK STUDIO</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    height:100vh;
+    color:white;
+    font-family:Arial;
+    overflow:hidden;
+}
+
+/* 🔥 Logo Glow Pulse Animation */
+.logo{
+    width:45vw;
+    max-width:420px;
+    min-width:200px;
+    animation:glowPulse 2s ease-in-out infinite;
+    filter:drop-shadow(0 0 25px #4da6ff);
+}
+
+.tap{
+    margin-top:20px;
+    opacity:0.8;
+    animation:blink 1.2s infinite;
+}
+
+/* Loading bar container */
+.loader{
+    width:60%;
+    height:6px;
+    background:#222;
+    border-radius:10px;
+    margin-top:25px;
+    overflow:hidden;
+    display:none;
+}
+
+/* 🔹 Segmented Line Loading Bar */
+.progress{
+    height:100%;
+    width:0%;
+    background:repeating-linear-gradient(
+        90deg,
+        #4da6ff 0px,
+        #4da6ff 20px,
+        #0b0c2a 20px,
+        #0b0c2a 30px
+    );
+    transition:width 1.5s linear;
+}
+
+/* Animations */
+@keyframes glowPulse{
+    0%{transform:scale(0.9); filter:drop-shadow(0 0 10px #4da6ff);}
+    50%{transform:scale(1); filter:drop-shadow(0 0 35px #4da6ff);}
+    100%{transform:scale(0.9); filter:drop-shadow(0 0 10px #4da6ff);}
+}
+
+@keyframes blink{
+    0%{opacity:0.3;}
+    50%{opacity:1;}
+    100%{opacity:0.3;}
+}
+</style>
+</head>
+
+<body onclick="enterSite()">
+
+<img src="image/download.png" class="logo">
+<div class="tap">Enter to the world</div>
+
+<div class="loader">
+    <div class="progress"></div>
+</div>
+
+<script>
+function enterSite(){
+    const audio = new Audio("intro.mp3/WhatsApp Audio 2026-02-23 at 6.22.48 PM.mpeg");
+    audio.play();
+
+    // show loading bar
+    document.querySelector(".loader").style.display = "block";
+    setTimeout(()=>{
+        document.querySelector(".progress").style.width = "100%";
+    },100);
+
+    // redirect after loading
+    setTimeout(()=>{
+        window.location.href="home.html";
+    },2000
+    
+    
+    );
+}
+</script>
+
+</body>
+</html>
